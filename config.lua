@@ -4,6 +4,10 @@
 
 Config = {
   ----------------------------------------------------------------------------
+  ----------------------- SERVER MANAGEMENT -------------------------------------
+  autoUpdateDB = true,
+
+  ----------------------------------------------------------------------------
   ----------------------- STARTING POINT -------------------------------------
   initGold                 = 0.0,
   initMoney                = 200.0,
@@ -12,16 +16,31 @@ Config = {
   initJob                  = "unemployed", -- leave it like this
   initJobGrade             = 0, -- leave it like this
   initGroup                = "user", -- leave it like this
-  Whitelist                = false, -- LEAVE TO FALSE IT'S NOT WORKING
+  Whitelist                = false,
   AllowWhitelistAutoUpdate = false,
-  MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED
   maxHealth                = 4, -- 10 is FULL 0 IS EMPTY define max outer core for players
   maxStamina               = 4, -- 10 is FULL 0 IS EMPTY define max outer core for players
+  PVP                      = true, -- Can players attack/hurt one another
+  PVPToggle                = true, -- If true, players can set their own pvp state
+  savePlayersTimer         = 10000, -- this will tell the core in how many miliseconds should all players be saved to the database, decreasing may reduce performance
+  showplayerIDwhenfocus    = true, -- set false will show steam name when focus on another player RMB
+  disableAutoAIM           = true, -- if false players with controllers will have autoaim just like in rdr2
+  ------------------------------------------------------------------------------
+  --------------------------- MULTICHARACTER -----------------------------------
+  SaveSteamNameDB          = false, -- TRUE if you want save steamname on character DB when player drop (need to update SQL)
+  UseCharPermission        = false, --(do not use this right now) TRUE if you want give multicharacter on selected players (need to update SQL) | if you change TRUE to FALSE player logs with first character created
+  MaxCharacters            = 5, --MAX ALLOWED TO BE CREATED [if UseCharPermission = true, SELECTED players(with command) can create MaxCharacters characters / if UseCharPermission = false, players can create MaxCharacters characters]
+
+  ------------------------------------------------------------------------------
+  ------------------------------ UI CORES --------------------------------------
+  HideOnlyDEADEYE = true,
+  HidePlayersCore = false,
+  HideHorseCores = false,
 
   ------------------------------------------------------------------------------
   ------------------------------ WEBHOOKS --------------------------------------
 
-  Logs         = true, -- SET TO FALSE IF YOU DONT WANT LOGS
+
   webhookColor = 16711680, --EMBED COLOR
   name         = "VORP", --NAME OF EMBED
   logo         = "https://via.placeholder.com/30x30", --HEAD LOGO
@@ -31,18 +50,24 @@ Config = {
 
   ---------------------------- WEBHOOK FOR EACH LOG -----------------------------
   --CHANGE THE LINKS
-
-  SetgroupWebhook   = "", --SETJOB
-  SetjobWebhook     = "", --SETGROUP
-  AddmoneyWebhook   = "", --ADDMONEY
-  DelMoneyWebhook   = "", --DELMONEY
-  AddItemsWebhook   = "", --ADDITEMS
-  AddWeaponsWebhook = "", --ADDWEAPONS
-  DelWagonsWebhook  = "", --DELWAGONS
-  TpmWebhook        = "", --TPM
-  DelHorseWebhook   = "", --DELHORSE
-  HealPlayerWebhook = "", --HEALPLAYER
-  ReviveWebhook     = "", --REVIVE
+  -- delete what you dont want or add nil
+  Logs = {
+    SetgroupWebhook   = "", --SETJOB
+    SetjobWebhook     = "", --SETGROUP
+    AddmoneyWebhook   = "", --ADDMONEY
+    DelMoneyWebhook   = "", --DELMONEY
+    AddItemsWebhook   = "", --ADDITEMS
+    AddWeaponsWebhook = "", --ADDWEAPONS
+    DelWagonsWebhook  = "", --DELWAGONS
+    TpmWebhook        = "", --TPM
+    DelHorseWebhook   = "", --DELHORSE
+    HealPlayerWebhook = "", --HEALPLAYER
+    ReviveWebhook     = "", --REVIVE
+    WhitelistWebhook  = "", --WHITELIST
+    BanWarnWebhook    = "", --BANS/WARNS
+    NewPlayerWebhook  = "", --NEWPLAYER
+    CharPermWebhook   = "", --CHARPERMS
+  },
 
   ------------------------------------------------------------------------------
   ---------------------------- VOICE -------------------------------------------
@@ -54,14 +79,18 @@ Config = {
   ------------------------------------------------------------------------------
   ------------------------- SHOW OR HIDE UI's ----------------------------------
 
-  HideUi          = true, --show or hide the UI includes  gold cash ID and level bar  the cash gold ID are now being displayed in the inventory. you can disable this one if yo u like it more
-  mapTypeOnFoot   = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
-  mapTypeOnMount  = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
-  enableTypeRadar = false, --- if true the above will work, if false players can choose their radar type in the game settings.
-
+  HideUi            = true, --show or hide the UI includes  gold cash ID and level bar  the cash gold ID are now being displayed in the inventory. you can disable this one if yo u like it more
+  mapTypeOnFoot     = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on foot
+  mapTypeOnMount    = 3, -- 0 = Off(no radar), 1 = Regular 2 = Expanded  3 = Simple(compass), for on horse
+  enableTypeRadar   = false, --- if true the above will work, if false players can choose their radar type in the game settings.
+  Loadinscreen      = true, --ENABLE LOADING SCREENS on spawn and while spawn dead
+  LoadinScreenTimer = 10000, -- miliseconds
   -------------------------------------------------------------------------------
   ------------------------------- RESPAWN ---------------------------------------
 
+  HealthOnRespawn = 500, --Player's health when respawned in hospital (MAX = 500)
+  HealthOnResurrection = 100, --Player's health when resurrected (MAX = 500)
+  DisableRecharge = true, --Disable auto recharge of health outer core (real ped health)
   RespawnTime = 10, --seconds
   RespawnKey = 0xDFF812F9, --[E] KEY
   RespawnTitleFont = 1, -- for the draw text message
@@ -116,6 +145,7 @@ Config = {
   KeyShowIds = "0x8CC9CD42", -- Press X
   ActiveEagleEye = true,
   ActiveDeadEye = false,
+  TimeZoneDifference = 1, -- Your time zone difference with UTC in winter time
 
   ----------------------------------------------------------------------------
   --------------------------- COMMAND PERMISSION -----------------------------
@@ -143,11 +173,16 @@ Config = {
   Langs = {
     IsConnected        = "🚫 Duplicated account connected (steam | rockstar)",
     NoSteam            = "🚫 You have to have Steam open, please open Steam & restart RedM",
-    NoInWhitelist      = "🚫 You are not in the Whitelist",
+    NoInWhitelist      = "🚫 You are not in the Whitelist. Send in discord channel #user-id your user-id: ",
     NoPermissions      = "You don't have enough permissions",
     CheckingIdentifier = "Checking Identifiers",
     LoadingUser        = "Loading User",
-    BannedUser         = "You Are Banned",
+    BannedUser         = "You Are Banned Until ",
+    DateTimeFormat     = "%d/%m/%y %H:%M:%S", -- Set wished DateTimeFormat for output in ban notification
+    TimeZone           = " CET", -- Set your timezone
+    DropReasonBanned   = "You were banned from the server until ",
+    Warned             = "You were warned",
+    Unwarned           = "You were unwarned",
     TitleOnDead        = "Do /alertdoctor in chat to request doctors aid",
     SubTitleOnDead     = "You can respawn in %s seconds",
     RespawnIn          = "You can respawn in ",
@@ -160,6 +195,25 @@ Config = {
     mustBeSeated       = "VORP: You must be in the driver's seat!",
     wagonInFront       = "VORP: You must be seated or near a wagon to delete it!",
     cantCarry          = "VORP: Can't carry more weapons!",
+    Hold               = "HOLD ON!!",
+    Load               = "You are loading in",
+    Almost             = "Almost there...",
+    Holddead           = "YOU ARE DEAD",
+    Loaddead           = "you left the server while dead",
+    forcedrespawn      = "YOU WILL BE RESPAWNED",
+    forced             = "Because you left the server while dead",
+    sit                = "you need to be steated",
+    NotifyChar         = "you must set your char height to 1.0 there will bugs if you dont.",
+    NotifyCharSelect   = "Once you ~e~delete ~q~a character theres no going back!",
+    PVPNotifyOn        = "PVP On ",
+    PVPNotifyOff       = "PVP Off",
+    AddChar            = "Added Multicharacter ",
+    RemoveChar         = "Removed Multicharacter ",
+    WrongHex           = "Hex not in DB or Wrong Hex",
+    myjob              = "your job is: ~o~",
+    mygrade            = " ~q~grade: ~o~",
+    charhours          = "your character hours is: ~o~",
+    playhours          = "hours played is: ~o~"
   },
 
 
