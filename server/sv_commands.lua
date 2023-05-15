@@ -1,7 +1,8 @@
 -------------------------------------------------------------------------------------------------
 --------------------------------------- VORP ADMIN COMMANDS -------------------------------------
 -------------------------------------------------------------------------------------------------
-local AceAllowed = {}
+
+local T = Translation[Lang].MessageOfSystem
 
 local CheckUser = function(target)
     if not VorpCore.getUser(tonumber(target)) then
@@ -18,18 +19,22 @@ local CheckArgs = function(args, requiered)
 end
 
 local function CheckAce(ace, source)
-    AceAllowed[source] = AceAllowed[source] or {}
     -- if nil allow commands that don't need permissions
     if ace then
         local all = 'vorpcore.showAllCommands'
 
-        if AceAllowed[source][all or ace] ~= nil then
-            return AceAllowed[source][all or ace]
-        else
-            local aceAllowed = IsPlayerAceAllowed(source, all or ace)
-            AceAllowed[source][all or ace] = aceAllowed
-            return aceAllowed
+        local aceAllowed = IsPlayerAceAllowed(source, all)
+        if aceAllowed then
+            return true
         end
+
+        aceAllowed = IsPlayerAceAllowed(source, ace)
+
+        if aceAllowed then
+            return true
+        end
+
+        return false
     else
         return true
     end
@@ -85,8 +90,8 @@ CreateThread(function()
                 return
             end
 
-            if not CheckAce(value.aceAllowed, _source) or not CheckGroupAllowed(value.groupAllowed, group) then -- check ace first then group
-                return VorpCore.NotifyObjective(_source, Config.Langs.NoPermissions, 4000)
+            if not CheckAce(value.aceAllowed, _source) and not CheckGroupAllowed(value.groupAllowed, group) then -- check ace first then group
+                return VorpCore.NotifyObjective(_source, T.NoPermissions, 4000)
             end
 
             if value.userCheck then            -- dont check for user existentence
@@ -96,7 +101,7 @@ CreateThread(function()
             end
 
             if not CheckJobAllowed(value.jobAllow, _source) then -- check ace first then group
-                return VorpCore.NotifyObjective(_source, Config.Langs.NoPermissions, 4000)
+                return VorpCore.NotifyObjective(_source, T.NoPermissions, 4000)
             end
 
             if not CheckArgs(args, #value.suggestion) then -- if requiered argsuments are not met
@@ -213,7 +218,7 @@ function AddWeapons(data)
     VORPInv.canCarryWeapons(target, 1, function(result) --can carry weapons
         local canCarry = result
         if not canCarry then
-            return VorpCore.NotifyObjective(data.source, Config.Langs.cantCarry, 4000)
+            return VorpCore.NotifyObjective(data.source, T.cantCarry, 4000)
         end
         VORPInv.createWeapon(target, weaponHash)
         SendDiscordLogs(data.config.webhook, data, data.source, weaponHash, "")
@@ -240,7 +245,7 @@ end
 function RevivePlayer(data)
     local target = tonumber(data.args[1])
 
-    if #data.args == 0 then
+    if #data.args == 0 or "" then
         TriggerClientEvent('vorp:resurrectPlayer', data.source) -- heal staff
     else
         if VorpCore.getUser(target) then
@@ -249,7 +254,7 @@ function RevivePlayer(data)
             VorpCore.NotifyObjective(data.source, Translation[Lang].Notify.userNonExistent, 4000)
         end
     end
-    SendDiscordLogs(data.config.webhook, data, target > 0 or data.source, "", "")
+    SendDiscordLogs(data.config.webhook, data, target or data.source, "", "")
     VorpCore.NotifyRightTip(data.source, string.format(Translation[Lang].Notify.revived, target), 4000)
 end
 
@@ -317,7 +322,8 @@ function BanPlayers(data)
     end
 
     local datetime = os.time() + banTime * 3600
-    TriggerClientEvent("vorp:ban", data.source, target, datetime)
+    TriggerEvent("vorpbans:addtodb", true, target, banTime)
+    --TriggerClientEvent("vorp:ban", data.source, target, datetime)
 
     local text = banTime == 0 and Translation[Lang].Notify.banned or
         (Translation[Lang].Notify.banned2 .. os.date(Config.DateTimeFormat, datetime + Config.TimeZoneDifference * 3600) .. Config.TimeZone)
@@ -328,7 +334,8 @@ end
 --UNBANPLAYERS
 function UnBanPlayers(data)
     local target = tonumber(data.args[1])
-    TriggerClientEvent("vorp:unban", data.source, target)
+    TriggerEvent("vorpbans:addtodb", false, target, 0)
+    --TriggerClientEvent("vorp:unban", data.source, target)
     SendDiscordLogs(data.config.webhook, data, data.source, "", "")
 end
 
@@ -349,7 +356,7 @@ end
 --UNWARNPLAYERS
 function UnWarnPlayer(data)
     local target = tonumber(data.args[1])
-    TriggerClientEvent("vorp:unwarn", data.source, target)
+    TriggerEvent("vorpwarns:addtodb", false, target)
     SendDiscordLogs(data.config.webhook, data, data.source, "", "")
 end
 
@@ -357,7 +364,7 @@ end
 function WarnPlayers(data)
     local target = tonumber(data.args[1])
     if data.source ~= target then -- dont warn yourself
-        TriggerClientEvent("vorp:warn", data.source, target)
+        TriggerEvent("vorpwarns:addtodb", true, target)
         SendDiscordLogs(data.config.webhook, data, data.source, "", "")
     end
 end
@@ -367,10 +374,10 @@ function AddCharCanCreateMore(data)
     if not Config.UseCharPermission then
         return
     end
-    local target = tonumber(data.args[1])
-    TriggerClientEvent("vorp:addchar", data.source, target)
+    local target = data.args[1]
+    TriggerEvent("vorpchar:addtodb", true, target)
     SendDiscordLogs(data.config.webhook, data, data.source, "", "")
-    VorpCore.NotifyRightTip(data.source, Config.Langs.AddChar .. target, 4000)
+    VorpCore.NotifyRightTip(data.source, T.AddChar .. target, 4000)
 end
 
 --REMOVE ALLOW CHAR CREATION
@@ -378,10 +385,10 @@ function RemoveCharCanCreateMore(data)
     if not Config.UseCharPermission then
         return
     end
-    local target = tonumber(data.args[1])
-    TriggerClientEvent("vorp:removechar", data.source, target)
+    local target = data.args[1]
+    TriggerEvent("vorpchar:addtodb", false, target)
     SendDiscordLogs(data.config.webhook, data, data.source, "", "")
-    VorpCore.NotifyRightTip(data.source, Config.Langs.RemoveChar .. target, 4000)
+    VorpCore.NotifyRightTip(data.source, T.RemoveChar .. target, 4000)
 end
 
 --MODIFY CHARACTER NAME
@@ -404,7 +411,7 @@ function MyJob(data)
     local Character = VorpCore.getUser(_source).getUsedCharacter
     local job       = Character.job
     local grade     = Character.jobGrade
-    VorpCore.NotifyRightTip(_source, Config.Langs.myjob .. job .. Config.Langs.mygrade .. grade, 4000)
+    VorpCore.NotifyRightTip(_source, T.myjob .. job .. T.mygrade .. grade, 4000)
 end
 
 --MYHOUR
@@ -420,11 +427,11 @@ function MyHours(data)
         return false
     end
 
-    if isInteger then
-        VorpCore.NotifyRightTip(_source, string.format(Config.Langs.charhours, hours), 4000)
+    if isInteger(hours) then
+        VorpCore.NotifyRightTip(_source, string.format(T.charhours, hours), 4000)
     else
         local newhour = math.floor(hours - 0.5)
-        VorpCore.NotifyRightTip(_source, string.format(Config.Langs.playhours, newhour, 30), 4000)
+        VorpCore.NotifyRightTip(_source, string.format(T.playhours, newhour, 30), 4000)
     end
 end
 
