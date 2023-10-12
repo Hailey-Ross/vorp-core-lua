@@ -21,6 +21,9 @@ Translation = {
             banned3 = "You were banned permanently!",
             healself = "You Revived Yourself.",
             healall = "You Have Been Healed.",
+            healedPlayer = "player with server id %d has been healed",
+            AddItems = "Item  %s with quantity %d added to your inventory",
+            AddWeapons = "Weapon added to your inventory",
             left = {
                 title = "~e~IMPORTANT!",
                 subtitle = "you must set your char height to 1.0 there will bugs if you dont.",
@@ -68,6 +71,7 @@ Translation = {
                 name = "Id",
                 name1 = "ItemName",
                 name2 = "Quantity",
+
             },
             addWeapon = {
                 custom = "\n**PlayerID** `%d` \n**Weapon given** `%s`",
@@ -193,7 +197,8 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**PlayerID** `%d`\n **Action:** `used charcreateadd`",
                 title = "📋` /addchar command` ",
-                label = "VORPcore command to set player can create more than one character will be allowed to create: " .. Config.MaxCharacters,
+                label = "VORPcore command to set player can create more than one character will be allowed to create: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "steam id example 11000010c8aa16e",
 
@@ -201,7 +206,8 @@ Translation = {
             charCreateRemove = {
                 custom = "\n**PlayerID** `%d`\n **Action:** `used charcreateremove`",
                 title = "📋` /removechar command` ",
-                label = "VORPcore command to set player can create more than one character will be allowed to create: " .. Config.MaxCharacters,
+                label = "VORPcore command to set player can create more than one character will be allowed to create: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "steam id example 11000010c8aa16e",
             },
@@ -263,7 +269,8 @@ Translation = {
             message4           = "Player ID ",
             message5           = "you were injured , per rule you must forget the past 30 minutes",
             message6           = "Respawn!!!",
-            permanentlyBan     = "You are banned permanently!"
+            permanentlyBan     = "You are banned permanently!",
+
         },
         SuggestChat     = {
             hideUi = "VORPcore command to HIDE all UI's from screen, nice to take screenshots.",
@@ -294,6 +301,9 @@ Translation = {
             banned3 = "Foi banido permanentemente!",
             healself = "Reviveu-se.",
             healall = "Foi curado.",
+            healedPlayer = "player with server id %d has been healed",
+            AddItems = "Item  %s com quantidade %d adicionado ao seu inventário",
+            AddWeapons = "Arma adicionada ao seu inventário",
             left = {
                 title = "~e~IMPORTANTE!",
                 subtitle = "deve definir a altura do seu personagem como 1.0, haverá bugs se não o fizer.",
@@ -428,7 +438,8 @@ Translation = {
                 name = "Steamid",
                 name1 = "tempo",
                 help = "exemplo de ID Steam: 11000010c8aa16e",
-                help1 = "Tempo de banimento: d para dia, w para semana, m para mês, a para anos. Exemplo: /ban steamid d2 - o jogador será banido por 2 dias",
+                help1 =
+                "Tempo de banimento: d para dia, w para semana, m para mês, a para anos. Exemplo: /ban steamid d2 - o jogador será banido por 2 dias",
             },
             unBan = {
                 custom = "\n**ID do Jogador:** `%d`\n **Ação:** `%s`",
@@ -465,14 +476,17 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**ID do Jogador:** `%d`\n **Ação:** `utilizou charcreateadd`",
                 title = "📋` Comando /addchar`",
-                label = "Comando VORPcore para permitir que um jogador crie mais de um personagem (será permitido criar: " ..Config.MaxCharacters .. ")",
+                label =
+                    "Comando VORPcore para permitir que um jogador crie mais de um personagem (será permitido criar: " ..
+                    Config.MaxCharacters .. ")",
                 name = "steamid",
                 help = "exemplo de ID Steam: 11000010c8aa16e",
             },
             charCreateRemove = {
                 custom = "\n**ID do Jogador** `%d`\n **Ação:** `usou charcreateremove`",
                 title = "📋`Comando /removechar`",
-                label = "Comando VORPcore para definir se o jogador pode criar mais de um personagem: " .. Config.MaxCharacters .. " personagens serão permitidos",
+                label = "Comando VORPcore para definir se o jogador pode criar mais de um personagem: " ..
+                    Config.MaxCharacters .. " personagens serão permitidos",
                 name = "steamid",
                 help = "exemplo de ID Steam: 11000010c8aa16e",
             },
@@ -565,6 +579,9 @@ Translation = {
             banned3 = "Você foi banido permanentemente!",
             healself = "Você se curou.",
             healall = "Você foi curado.",
+            healedPlayer = "player with server id %d has been healed",
+            AddItems = "Item  %s com quantidade %d adicionado ao seu inventário",
+            AddWeapons = "Arma adicionada ao seu inventário",
             left = {
                 title = "~e~IMPORTANTE!",
                 subtitle = "você deve definir a altura do seu personagem como 1.0, haverá bugs se você não fizer isso.",
@@ -699,7 +716,8 @@ Translation = {
                 name = "Steamid",
                 name1 = "tempo",
                 help = "exemplo de ID da Steam: 11000010c8aa16e",
-                help1 = 'Tempo de banimento: d para dia, w para semana, m para mês, a para ano. Exemplo: /ban steamid d2 - o jogador será banido por 2 dias',
+                help1 =
+                'Tempo de banimento: d para dia, w para semana, m para mês, a para ano. Exemplo: /ban steamid d2 - o jogador será banido por 2 dias',
             },
             unBan = {
                 custom = "\n**ID do Jogador:** `%d`\n **Ação:** `%s`",
@@ -736,14 +754,16 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**ID do Jogador:** `%d`\n **Ação:** `habilitou a criação de mais personagens`",
                 title = "📋` Comando /addchar` ",
-                label = "Comando VORPcore para permitir que o jogador crie mais de um personagem (quantidade permitida: " .. Config.MaxCharacters .. ")",
+                label = "Comando VORPcore para permitir que o jogador crie mais de um personagem (quantidade permitida: " ..
+                    Config.MaxCharacters .. ")",
                 name = "steamid",
                 help = "exemplo de ID da Steam: 11000010c8aa16e",
             },
             charCreateRemove = {
                 custom = "\n**ID do Jogador** `%d`\n **Ação:** `usou o comando charcreateremove`",
                 title = "📋` Comando /removechar`",
-                label = "Comando VORPcore para permitir que o jogador crie mais de um personagem. Será permitido criar: " .. Config.MaxCharacters,
+                label = "Comando VORPcore para permitir que o jogador crie mais de um personagem. Será permitido criar: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "exemplo de ID Steam: 11000010c8aa16e",
             },
@@ -836,6 +856,9 @@ Translation = {
             banned3 = "Sei stato bannato permanentemente!",
             healself = "Ti sei rianimato.",
             healall = "Sei stato curato.",
+            healedPlayer = "player with server id %d has been healed",
+            AddItems = "Item  %s con quantità %d aggiunto al tuo inventario",
+            AddWeapons = "Arma aggiunta al tuo inventario",
             left = {
                 title = "~e~IMPORTANTE!",
                 subtitle = "Devi impostare l'altezza del tuo personaggio a 1.0, ci saranno molti bug se non lo fai.",
@@ -970,7 +993,8 @@ Translation = {
                 name = "Steamid",
                 name1 = "time",
                 help = "steam id esempio 11000010c8aa16e",
-                help1 = "Tempo di ban: d per giorni w per settimane m per mesi y per anni esempio con /ban steamid d2, il giocatore sarà bannato per 2 giorni",
+                help1 =
+                "Tempo di ban: d per giorni w per settimane m per mesi y per anni esempio con /ban steamid d2, il giocatore sarà bannato per 2 giorni",
             },
             unBan = {
                 custom = "\n**IDPlayer** `%d`\n **Azione:** `%s`",
@@ -1087,7 +1111,7 @@ Translation = {
         },
     },
     Spanish      = {
-        Notify = {
+        Notify          = {
             userNonExistent = "ID incorrecta o Usuario no existente.",
             ReadSuggestion = "Por favor lea las sugerencias del chat para utilizar el comando correctamente.",
             SetGroup = "Has añadido al Grupo al Usuario con ID: %d",
@@ -1108,6 +1132,9 @@ Translation = {
             banned3 = "Has sido baneado/a permanentemente!",
             healself = "Te has revivido a ti mismo/a.",
             healall = "Te han curado.",
+            healedPlayer = "jogador con id %d ha sido curado",
+            AddItems = "Item  %s con cantidad %d añadido a tu inventario",
+            AddWeapons = "Arma añadida a tu inventario",
             left = {
                 title = "~e~IMPORTANTE!",
                 subtitle = "debes establecer la altura de tu personaje en 1.0 para evitar errores.",
@@ -1123,7 +1150,7 @@ Translation = {
                 color = "COLOR_RED",
             },
         },
-        Commands = {
+        Commands        = {
             webHookMessage = "**ID de Steam: **`%s`**\nIdentificadorr**`%s` \n**Discord:** <@%s>**\nIP: **`%s`", -- only translate
             addGroup = {
                 custom = "\n**IDUsuario** `%d`\n**Añadido al Grupo** `%s`",
@@ -1280,14 +1307,16 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**ID de jugador** `%d`\n **Acción:** `usó charcreateadd`",
                 title = "📋` Comando /addchar` ",
-                label = "Comando VORPcore para permitir que un jugador cree más de un personaje. Se permitirá crear: " .. Config.MaxCharacters,
+                label = "Comando VORPcore para permitir que un jugador cree más de un personaje. Se permitirá crear: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "ejemplo de ID de Steam: 11000010c8aa16e",
             },
             charCreateRemove = {
                 custom = "\n**PlayerID** `%d`\n **Acción:** `usó charcreateremove`",
                 title = "📋` Comando /removechar` ",
-                label = "Comando VORPcore para permitir que los jugadores creen más de un personaje: " .. Config.MaxCharacters,
+                label = "Comando VORPcore para permitir que los jugadores creen más de un personaje: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "ejemplo de ID de Steam: 11000010c8aa16e",
             },
@@ -1352,7 +1381,8 @@ Translation = {
             permanentlyBan     = "Estás baneado permanentemente!"
         },
         SuggestChat     = {
-            hideUi = "Comando VORPcore para OCULTAR todas las interfaces de la pantalla, útil para tomar capturas de pantalla.",
+            hideUi =
+            "Comando VORPcore para OCULTAR todas las interfaces de la pantalla, útil para tomar capturas de pantalla.",
             toogleUi = "Comando VORPcore para alternar las interfaces de VORP en la pantalla",
             stopAnim = "Comando VORPcore para usar si estás atascado en una animación.",
             tooglePVP = "Comando VORPcore para ACTIVAR/DESACTIVAR el PvP para tu personaje.",
@@ -1380,16 +1410,21 @@ Translation = {
             banned3 = "Vous avez été banni de façon permanente !",
             healself = "Vous vous êtes ressuscité.",
             healall = "Vous avez été soigné.",
+            healedPlayer = "player with server id %d has been healed",
+            AddItems = "Item  %s avec quantité %d ajouté à votre inventaire",
+            AddWeapons = "Arme ajoutée à votre inventaire",
             left = {
                 title = "~e~IMPORTANT !",
-                subtitle = "vous devez définir la hauteur de votre personnage sur 1.0, il y aura des bugs si vous ne le faites pas.",
+                subtitle =
+                "vous devez définir la hauteur de votre personnage sur 1.0, il y aura des bugs si vous ne le faites pas.",
                 dict = "minigames_hud",
                 icon = "five_finger_burnout",
                 color = "COLOR_RED",
             },
             left1 = {
                 title = "~e~IMPORTANT !",
-                subtitle = "Une fois que vous ~e~supprimez ~q~un personnage, il n'y a pas de retour en arrière possible !",
+                subtitle =
+                "Une fois que vous ~e~supprimez ~q~un personnage, il n'y a pas de retour en arrière possible !",
                 dict = "minigames_hud",
                 icon = "five_finger_burnout",
                 color = "COLOR_RED",
@@ -1514,7 +1549,8 @@ Translation = {
                 name = "Steamid",
                 name1 = "durée",
                 help = "exemple d'ID Steam : 11000010c8aa16e",
-                help1 = 'Durée du bannissement : d pour jour, w pour semaine, m pour mois, y pour années. Exemple : /ban steamid d2   le joueur sera banni pendant 2 jours',
+                help1 =
+                'Durée du bannissement : d pour jour, w pour semaine, m pour mois, y pour années. Exemple : /ban steamid d2   le joueur sera banni pendant 2 jours',
             },
             unBan = {
                 custom = "\n**ID Joueur** `%d`\n **Action :** `%s`",
@@ -1551,14 +1587,16 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**ID Joueur** `%d`\n **Action :** `utilisé charcreateadd`",
                 title = "📋` Commande /addchar`",
-                label = "Commande VORPcore pour autoriser un joueur à créer plusieurs personnages (maximum : " .. Config.MaxCharacters .. ")",
+                label = "Commande VORPcore pour autoriser un joueur à créer plusieurs personnages (maximum : " ..
+                    Config.MaxCharacters .. ")",
                 name = "steamid",
                 help = "exemple d'ID Steam : 11000010c8aa16e",
             },
             charCreateRemove = {
                 custom = "\n**ID du joueur** `%d`\n **Action :** `used charcreateremove`",
                 title = "📋`Commande /removechar` ",
-                label = "Commande VORPcore pour autoriser les joueurs à créer plus d'un personnage : " .. Config.MaxCharacters,
+                label = "Commande VORPcore pour autoriser les joueurs à créer plus d'un personnage : " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "exemple d'ID Steam : 11000010c8aa16e",
             },
@@ -1578,7 +1616,8 @@ Translation = {
         MessageOfSystem = {
             IsConnected        = "🚫 Compte dupliqué connecté (Steam | Rockstar | EpicGames)",
             NoSteam            = "🚫 Vous devez avoir Steam ouvert, veuillez ouvrir Steam et redémarrer RedM",
-            NoInWhitelist      = "🚫 Vous n'êtes pas sur la liste blanche. Envoyez votre ID utilisateur dans le canal Discord #user-id: ",
+            NoInWhitelist      =
+            "🚫 Vous n'êtes pas sur la liste blanche. Envoyez votre ID utilisateur dans le canal Discord #user-id: ",
             NoPermissions      = "Vous n'avez pas suffisamment de permissions",
             CheckingIdentifier = "Vérification des identifiants",
             LoadingUser        = "Chargement de l'utilisateur",
@@ -1623,7 +1662,8 @@ Translation = {
             permanentlyBan     = "Vous êtes banni de manière permanente!",
         },
         SuggestChat     = {
-            hideUi = "Commande VORPcore pour MASQUER toutes les interfaces de l'écran, pratique pour prendre des captures d'écran.",
+            hideUi =
+            "Commande VORPcore pour MASQUER toutes les interfaces de l'écran, pratique pour prendre des captures d'écran.",
             toogleUi = "Commande VORPcore pour basculer les interfaces VORP de l'écran",
             stopAnim = "Commande VORPcore à utiliser si vous êtes coincé dans une animation.",
             tooglePVP = "Commande VORPcore pour ACTIVER/DÉSACTIVER le PvP pour votre personnage.",
@@ -1651,9 +1691,13 @@ Translation = {
             banned3 = "Sie wurden dauerhaft gesperrt!",
             healself = "Du hast dich selbst wiederbelebt.",
             healall = "Sie wurden geheilt.",
+            healedPlayer = "Spieler mit Server-ID %d wurde geheilt",
+            AddItems = "Item  %s mit Menge %d zu Ihrem Inventar hinzugefügt",
+            AddWeapons = "Waffe zu Ihrem Inventar hinzugefügt",
             left = {
                 title = "~e~WICHTIG!",
-                subtitle = "Sie müssen die Höhe Ihres Charakters auf 1,0 setzen. Wenn Sie dies nicht tun, treten Fehler auf.",
+                subtitle =
+                "Sie müssen die Höhe Ihres Charakters auf 1,0 setzen. Wenn Sie dies nicht tun, treten Fehler auf.",
                 dict = "minigames_hud",
                 icon = "five_finger_burnout",
                 color = "COLOR_RED",
@@ -1708,6 +1752,17 @@ Translation = {
                 help2 = 'Munition',
                 name = "Id",
                 name1 = "Waffenname",
+            },
+            delMoney = {
+                custom = "\n**PlayerID** `%d` \n**Typ** `%d`\n**Menge** `%d`",
+                title = "📋` /delmoney Befehl` ",
+                label = "VORPcore-Befehl Geld abheben",
+                help = 'Spieler-ID',
+                help1 = 'Gib 0 für Bargeld und 1 für Gold ein',
+                help2 = 'Menge',
+                name = "Id",
+                name1 = "Typ",
+                name2 = "Menge",
             },
             addMoney = {
                 custom = "\n**PlayerID** `%d` \n**Typ** `%d`\n**Menge** `%d`",
@@ -1812,14 +1867,17 @@ Translation = {
             charCreateAdd = {
                 custom = "\n**PlayerID** `%d`\n **Aktion:** `charcreateadd verwendet`",
                 title = "📋` /addchar Befehl` ",
-                label = "VORPcore-Befehl, um festzulegen, ob ein Spieler mehr als einen Charakter erstellen darf: " ..Config.MaxCharacters,
+                label = "VORPcore-Befehl, um festzulegen, ob ein Spieler mehr als einen Charakter erstellen darf: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "Steam-ID Beispiel 11000010c8aa16e",
+
             },
             charCreateRemove = {
                 custom = "\n**PlayerID** `%d`\n **Aktion:** `charcreateremove verwendet`",
                 title = "📋` /removechar Befehl` ",
-                label = "VORPcore-Befehl, um festzulegen, ob ein Spieler mehr als einen Charakter erstellen darf: " ..Config.MaxCharacters,
+                label = "VORPcore-Befehl, um festzulegen, ob ein Spieler mehr als einen Charakter erstellen darf: " ..
+                    Config.MaxCharacters,
                 name = "steamid",
                 help = "Steam-ID Beispiel 11000010c8aa16e",
             },
@@ -1831,6 +1889,7 @@ Translation = {
                 title = "📋` /myhours Befehl` ",
                 label = "VORPcore-Befehl, um deine Spielstunden zu überprüfen",
             },
+
         },
         addWebhook      = {
             whitelistid = "**Steam-Name: **`%s`**\nIdentifier:** `%s`\n**Discord:** <@%s>\n**User-Id:** `%s`",
@@ -1844,6 +1903,8 @@ Translation = {
             CheckingIdentifier = "Überprüfe Identifikatoren",
             LoadingUser        = "Benutzer wird geladen",
             BannedUser         = "Du bist bis zum folgenden Zeitpunkt gebannt: ",
+            DateTimeFormat     = "%d/%m/%y %H:%M:%S", -- Setzt das gewünschte DateTimeFormat für die Ausgabe in der Sperrbenachrichtigung
+            TimeZone           = " CET",              -- Set your timezone
             DropReasonBanned   = "Du wurdest vom Server gebannt bis zum folgenden Zeitpunkt: ",
             Warned             = "Du wurdest verwarnt",
             Unwarned           = "Die Verwarnung wurde aufgehoben",
@@ -1851,11 +1912,13 @@ Translation = {
             SubTitleOnDead     = "Du kannst in %s Sekunden wiederbeleben",
             SecondsMove        = " Sekunden",
             YouAreCarried      = "Du wirst von einer Person getragen",
+            VoiceRangeChanged  = "Die Reichweite des Voice-Chats wurde auf %s Meter geändert",
             promptLabel        = "Wiederbeleben",
             prompt             = "Wiederbeleben",
             wayPoint           = "VORP: Du musst zuerst einen Wegpunkt setzen!",
             mustBeSeated       = "VORP: Du musst auf dem Fahrersitz sitzen!",
-            wagonInFront       = "VORP: Du musst im Wagen sitzen oder dich in der Nähe eines Wagens befinden, um ihn zu löschen!",
+            wagonInFront       =
+            "VORP: Du musst im Wagen sitzen oder dich in der Nähe eines Wagens befinden, um ihn zu löschen!",
             cantCarry          = "VORP: Kann keine weiteren Waffen tragen!",
             Hold               = "HALTEN!!",
             Load               = "Du wachst auf",
@@ -1865,6 +1928,8 @@ Translation = {
             forcedrespawn      = "DU WIRST WIEDERBELEBT",
             forced             = "Weil du den Server verlassen hast, während du tot warst",
             sit                = "Du musst sitzen",
+            NotifyChar         = "Sie müssen Ihre Zeichenhöhe auf 1,0 setzen. Wenn Sie dies nicht tun, treten Fehler auf.",
+            NotifyCharSelect   = "Sobald Sie einen Charakter gelöscht haben, gibt es kein Zurück mehr!",
             PVPNotifyOn        = "PVP an",
             PVPNotifyOff       = "PVP aus",
             AddChar            = "Mehrere Charaktere hinzugefügt",
@@ -1882,9 +1947,11 @@ Translation = {
             message5           = "du wurdest verletzt, gemäß den Regeln musst du die letzten 30 Minuten vergessen",
             message6           = "Wiederbeleben!!!",
             permanentlyBan     = "Du bist permanent gebannt!",
+
         },
         SuggestChat     = {
-            hideUi = "VORPcore-Befehl, um ALLE Benutzeroberflächen auf dem Bildschirm AUSZUBLICKEN, nützlich für Screenshots.",
+            hideUi =
+            "VORPcore-Befehl, um ALLE Benutzeroberflächen auf dem Bildschirm AUSZUBLICKEN, nützlich für Screenshots.",
             toogleUi = "VORPcore-Befehl zum Ein- und Ausschalten der VORP-Benutzeroberflächen auf dem Bildschirm",
             stopAnim = "VORPcore-Befehl, wenn Sie in einer Animation feststecken.",
             tooglePVP = "VORPcore-Befehl zum Ein- und Ausschalten des PvP für deinen Charakter.",
